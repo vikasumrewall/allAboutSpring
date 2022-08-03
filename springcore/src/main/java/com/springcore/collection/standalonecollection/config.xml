@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+ https://www.springframework.org/schema/beans/spring-beans.xsd
+  http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context.xsd
+   http://www.springframework.org/schema/util
+ http://www.springframework.org/schema/util/spring-util.xsd"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p" 
+	xmlns:util="http://www.springframework.org/schema/util">
+	
+	<util:list list-class="java.util.LinkedList" id="friendLst">
+	<value>Ram</value>
+	<value>Shyam</value>
+	</util:list>
+	
+	<util:map map-class="java.util.HashMap" id="feeMap">
+	<entry key="Spring"  value="8000"/>
+	<entry key="Java"  value="5000"/>
+	</util:map>
+	
+	
+	<util:properties id="dbconfig">
+	<prop key="driver">com.oracle</prop>
+	<prop key="usreName">Vikase</prop>
+	</util:properties>
+	
+	
+<!-- 1st way to use it -->
+	<bean class="com.springcore.collection.standalonecollection.Person" name="person1">
+	<property name="friend">
+	<ref bean="friendLst"/>
+	</property>
+	
+	<property name="fee">
+	<ref bean="feeMap"/>
+	</property>
+	
+	
+	<property name="properties">
+	<ref bean="dbconfig"/>
+	</property>
+	
+	</bean>
+	
+	<!-- 2nd and cleaner way to use it with less code-->
+	<bean class="com.springcore.collection.standalonecollection.Person" name="person2">
+	<property name="friend" ref="friendLst"/>
+	<property name="fee" ref="feeMap"/>
+	<property name="properties" ref="dbconfig"/>
+	
+	</bean>
+
+</beans>

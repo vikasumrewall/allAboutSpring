@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+ https://www.springframework.org/schema/beans/spring-beans.xsd"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c">
+
+
+<bean class="com.springcore.ci.Certi" name="cer">
+	<constructor-arg value="Android" />
+	</bean>
+	
+	
+	
+
+	<bean class="com.springcore.ci.Person" name="person1">
+	
+	<constructor-arg>
+			<value>12</value>
+		</constructor-arg>
+		
+		<constructor-arg>
+			<value>vikas</value>
+		</constructor-arg>
+		
+		<constructor-arg>
+		<ref bean="cer" />
+			
+		</constructor-arg>
+		
+		
+	</bean>
+	
+	
+	<bean class="com.springcore.ci.Person" name="person2">
+		
+	<constructor-arg value="14" />
+	<constructor-arg value="Ram" />
+	<constructor-arg ref="cer" />
+		</bean>
+	
+	<bean class="com.springcore.ci.Person" name="person3">
+		<constructor-arg value="Ram" type="String"/>
+	<constructor-arg value="14" type="int"/>
+	<constructor-arg ref="cer" type="com.springcore.ci.Certi"/>
+	</bean>
+	
+	
+	<bean class="com.springcore.ci.Certi" name="cerWithCTag" c:name="Python"/>
+	
+	<bean class="com.springcore.ci.Person" name="person4" c:personId="15" c:personName="Shyam" c:certi="cerWithCTag"/>
+		
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</beans>

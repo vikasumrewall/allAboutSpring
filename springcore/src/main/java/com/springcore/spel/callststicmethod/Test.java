@@ -1,0 +1,29 @@
+package com.springcore.spel.callststicmethod;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.expression.Expression;
+import org.springframework.expression.spel.standard.SpelExpressionParser;
+
+public class Test {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		ApplicationContext context=new ClassPathXmlApplicationContext("com/springcore/spel/callststicmethod/config.xml");
+		
+	   Demo d1=	context.getBean("demo",Demo.class);
+	
+	   System.out.println(d1);
+	   
+	   /*
+	    * to test spel
+	    */
+	   SpelExpressionParser parser=new SpelExpressionParser();
+	  Expression exp= parser.parseExpression("{2+3}");
+	   System.out.println(exp.getValue());
+	
+
+	}
+
+}

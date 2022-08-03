@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+ https://www.springframework.org/schema/beans/spring-beans.xsd
+  http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context.xsd
+   http://www.springframework.org/schema/util
+ http://www.springframework.org/schema/util/spring-util.xsd"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p" 
+	xmlns:util="http://www.springframework.org/schema/util">
+	
+	
+	<!-- it wil scan all cals in packege and its sub packege -->
+	<context:component-scan base-package="com.springcore.beanscope.xml"/>
+	
+<util:list list-class="java.util.ArrayList" id="addressLst">
+<value>Delhi</value>
+<value>Mumbai</value>
+</util:list>
+
+<!--please make a note that by default value od scipe is singleton  -->
+
+<bean class="com.springcore.beanscope.xml.PersonSingleton" id="personSingleton" scope="singleton">
+<property name="studentName" value="Vikas"></property>
+<property name="city" value="Vikas"></property>
+<property name="address">
+<ref bean="addressLst"/>
+</property>
+</bean>
+
+
+<bean class="com.springcore.beanscope.xml.PersonPrototype" id="personPrototype" scope="prototype">
+<property name="studentName" value="Vikas"></property>
+<property name="city" value="Vikas"></property>
+<property name="address" ref="addressLst"/>
+</bean>
+
+
+
+
+
+	
+</beans>
