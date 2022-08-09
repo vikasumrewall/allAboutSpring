@@ -7,7 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 public class Student {
 	private String name;
-	private String id;
+	private long id;
 	
 	@DateTimeFormat(pattern="dd/MM/yyyy")
 	private Date dob;
@@ -15,6 +15,8 @@ public class Student {
 	private List<String> course;
 	private String gender;
 	private String studentType;
+	
+	private Address address;
 	
 	
 	
@@ -37,13 +39,13 @@ public class Student {
 
 
 
-	public String getId() {
+	public long getId() {
 		return id;
 	}
 
 
 
-	public void setId(String id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -97,12 +99,27 @@ public class Student {
 
 
 
+	public Address getAddress() {
+		return address;
+	}
+
+
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "Student [name=" + name + ", id=" + id + ", dob=" + dob + ", course=" + course + ", gender=" + gender
-				+ ", studentType=" + studentType + "]";
+				+ ", studentType=" + studentType + ", address=" + address + "]";
 	}
-	
+
+
+
+
 	
 
 }

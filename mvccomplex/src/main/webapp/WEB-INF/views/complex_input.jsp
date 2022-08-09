@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
   <head>
@@ -10,10 +13,23 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+<link href="<c:url  value="/resources/css/style.css"/>"/>
+
+
+<script src="<c:url  value="/resources/javascript/script.js"/>" type="text/javascript" ></script>
+
+    <title>Complex Form</title>
   </head>
   <body>
-   <form action="doActionWithoutBinding" method="post">
+  
+ 
+   <div class="alert alert-danger" role="alert">
+ 
+   <form:errors path="student.*"/>
+</div>
+ 
+ 
+   <form action="doAction" method="post">
    
     <div class="form-group">
     <label for="name">Name</label>
@@ -66,6 +82,28 @@
       <option>Professional</option>
     </select>
   </div>
+  
+  <div class="card">
+ 
+  <div class="card-body">
+  <div class="form-group">
+  <p> Your Address</p>
+    <label for="address.city">Name</label>
+    <input type="text" class="form-control" id="address.city" placeholder="Enter city" name="address.city">
+  
+  </div>
+  
+  
+  <div class="form-group">
+    <label for="name">address.street</label>
+    <input type="text" class="form-control" id="address.street" placeholder="Enter street" name="address.street">
+  
+  </div>
+  </div>
+  
+   </div>
+  
+  
   
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
